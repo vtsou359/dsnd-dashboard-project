@@ -1,6 +1,7 @@
 class BaseComponent:
 
     def build_component(self, entity_id, model):
+
         raise NotImplementedError
     
     def outer_div(self, component):
