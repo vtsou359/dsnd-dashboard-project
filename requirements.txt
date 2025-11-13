@@ -8,4 +8,5 @@ pytest
 flake8
 ipython
 setuptools
+sqlite-minutils==4.0.3
 -e ./python-package

@@ -5,7 +5,7 @@ from pathlib import Path
 # set to the absolute path for the root of this project directory
 #### YOUR CODE HERE
 project_root = Path(__file__).parent.parent
- 
+
 # Using the `project_root` variable
 # create a `model_path` variable
 # that points to the file `model.pkl`
