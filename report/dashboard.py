@@ -3,14 +3,6 @@ import matplotlib.pyplot as plt
 
 # Import QueryBase, Employee, Team from employee_events
 #### YOUR CODE HERE
-
-# Ensure we import the local package version from python-package/employee_events,
-# not a similarly named site-packages distribution
-
-from pathlib import Path
-import sys
-sys.path.insert(0, str(Path(__file__).parents[1] / 'python-package'))
-
 from employee_events import QueryBase, Employee, Team
 
 # import the load_model function from the utils.py file
