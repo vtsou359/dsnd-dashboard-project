@@ -141,7 +141,7 @@ class LineChart(MatplotlibViz):
         
         # Set title and labels for x and y axis
         #### YOUR CODE HERE
-        ax.set_title("Cumulative event counts")
+        ax.set_title("Cumulative event counts", fontsize=20)
         ax.set_xlabel("Date")
         ax.set_ylabel("Event count")
 
@@ -202,7 +202,7 @@ class BarChart(MatplotlibViz):
         # Run the following code unchanged
         ax.barh([''], [pred])
         ax.set_xlim(0, 1)
-        ax.set_title('Predicted Recruitment Risk', fontsize=20)
+        ax.set_title('Predicted Recruitment Risk',fontsize=20)
         
         # pass the axis variable
         # to the `.set_axis_styling`
