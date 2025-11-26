@@ -3,25 +3,30 @@ import matplotlib.pyplot as plt
 
 # Import QueryBase, Employee, Team from employee_events
 #### YOUR CODE HERE
+
+# Ensure we import the local package version from python-package/employee_events,
+# not a similarly named site-packages distribution
+
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parents[1] / 'python-package'))
+
 from employee_events import QueryBase, Employee, Team
 
 # import the load_model function from the utils.py file
 #### YOUR CODE HERE
-from report.utils import load_model
+from utils import load_model
 
-"""
-Below, we import the parent classes
-you will use for subclassing
-"""
-from report.base_components import (
+# Below, we import the parent classes
+# you will use for subclassing
+from base_components import (
     Dropdown,
     BaseComponent,
     Radio,
     MatplotlibViz,
     DataTable
     )
-
-from report.combined_components import FormGroup, CombinedComponent
+from combined_components import FormGroup, CombinedComponent
 
 
 # Create a subclass of base_components/dropdown
@@ -33,7 +38,7 @@ class ReportDropdown(Dropdown):
     # ensuring it has the same parameters
     # as the Report parent class's method
     #### YOUR CODE HERE
-    def build_component(self, model, entity_id):
+    def build_component(self, entity_id, model):
         #  Set the `label` attribute so it is set
         #  to the `name` attribute for the model
         #### YOUR CODE HERE
@@ -42,18 +47,18 @@ class ReportDropdown(Dropdown):
         # Return the output from the
         # parent class's build_component method
         #### YOUR CODE HERE
-        return super().build_component(model, entity_id)
+        return super().build_component(entity_id, model)
     
     # Overwrite the `component_data` method
     # Ensure the method uses the same parameters
     # as the parent class method
     #### YOUR CODE HERE
-    def component_data(self, model, entity_id):
+    def component_data(self, entity_id, model):
         # Using the model argument
         # call the employee_events method
         # that returns the user-type's
         # names and ids
-        return model.employee_events(entity_id)
+        return model.names()
 
 
 
@@ -109,7 +114,7 @@ class LineChart(MatplotlibViz):
         # Use the .cumsum method to change the data
         # in the dataframe to cumulative counts
         #### YOUR CODE HERE
-        df = df.cusum()
+        df = df.cumsum()
         
         
         # Set the dataframe columns to the list
@@ -177,6 +182,7 @@ class BarChart(MatplotlibViz):
         # Using the predictor class attribute
         # pass the data to the `predict_proba` method
         #### YOUR CODE HERE
+        dt = dt.rename(columns={'Positive': 'positive_events', 'Negative': 'negative_events'})
         predict_prob = self.predictor.predict_proba(dt)
         
         # Index the second column of predict_proba output
@@ -239,7 +245,7 @@ class NotesTable(DataTable):
     # Overwrite the `component_data` method
     # using the same parameters as the parent class
     #### YOUR CODE HERE
-    def component_data(self, model, entity_id):
+    def component_data(self,entity_id, model):
         
         # Using the model and entity_id arguments
         # pass the entity_id to the model's .notes 

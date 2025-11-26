@@ -72,7 +72,7 @@ class Employee(QueryBase):
     def model_data(self, id):
 
         query_= f"""
-        SELECT SUM(positive_events) positive_events , SUM(negative_events) negative_events
+        SELECT SUM(positive_events) AS Positive , SUM(negative_events) AS Negative
         FROM {self.name}
         JOIN employee_events
             USING({self.name}_id)

@@ -13,7 +13,7 @@ project_root = Path(__file__).parent.parent
 # to a `db_path` function
 #### YOUR CODE HERE
 @pytest.fixture
-def db_path(project_root):
+def db_path():
     # Using the `project_root` variable
     # return a pathlib object for the `employee_events.db` file
     #### YOUR CODE HERE

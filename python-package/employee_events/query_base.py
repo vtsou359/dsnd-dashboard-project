@@ -38,12 +38,15 @@ class QueryBase(QueryMixin):
         # YOUR CODE HERE
         table = self.name
         query_1 = f"""
-        SELECT event_date, SUM(positive) AS positive, SUM(negative) AS negative
+        SELECT event_date
+             , SUM(positive_events) AS Positive
+             , SUM(negative_events) AS Negative
         FROM {table}
         JOIN employee_events
-        USING ({table}_id)
+            USING ({table}_id)
         WHERE {table}_id = {id}
         GROUP BY event_date
+        ORDER BY event_date
         """
         return self.pandas_query(query_1)
 
