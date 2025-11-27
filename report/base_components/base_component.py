@@ -1,12 +1,14 @@
+# flake8: noqa
+
+
 class BaseComponent:
 
     def build_component(self, entity_id, model):
 
         raise NotImplementedError
-    
+
     def outer_div(self, component):
         return component
-    
 
     def component_data(self, entity_id, model):
         raise NotImplemented

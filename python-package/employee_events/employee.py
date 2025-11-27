@@ -1,3 +1,5 @@
+# flake8: noqa
+
 # Import the QueryBase class
 #### YOUR CODE HERE
 from .query_base import QueryBase
@@ -7,6 +9,7 @@ from .query_base import QueryBase
 #### YOUR CODE HERE
 from .sql_execution import QueryMixin
 
+
 # Define a subclass of QueryBase
 # called Employee
 #### YOUR CODE HERE
@@ -15,7 +18,7 @@ class Employee(QueryBase):
     # Set the class attribute `name`
     # to the string "employee"
     #### YOUR CODE HERE
-    name = 'employee'
+    name = "employee"
 
     # Define a method called `names`
     # that receives no arguments
@@ -23,10 +26,10 @@ class Employee(QueryBase):
     # from an sql execution
     #### YOUR CODE HERE
     def names(self):
-        
+
         # Query 3
         # Write an SQL query
-        # that selects two columns 
+        # that selects two columns
         # 1. The employee's full name
         # 2. The employee's id
         # This query should return the data
@@ -37,7 +40,6 @@ class Employee(QueryBase):
         FROM employee
         """
         return self.query(query_3)
-    
 
     # Define a method called `username`
     # that receives an `id` argument
@@ -45,7 +47,7 @@ class Employee(QueryBase):
     # from an sql execution
     #### YOUR CODE HERE
     def username(self, id):
-        
+
         # Query 4
         # Write an SQL query
         # that selects an employees full name
@@ -60,7 +62,6 @@ class Employee(QueryBase):
         """
         return self.query(query_4)
 
-
     # Below is method with an SQL query
     # This SQL query generates the data needed for
     # the machine learning model.
@@ -71,7 +72,7 @@ class Employee(QueryBase):
     #### YOUR CODE HERE
     def model_data(self, id):
 
-        query_= f"""
+        query_ = f"""
         SELECT SUM(positive_events) AS Positive , SUM(negative_events) AS Negative
         FROM {self.name}
         JOIN employee_events

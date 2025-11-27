@@ -1,6 +1,9 @@
+# flake8: noqa
+
 # Import any dependencies needed to execute sql queries
 # YOUR CODE HERE
 from .sql_execution import QueryMixin
+
 
 # Define a class called QueryBase
 # Use inheritance to add methods
@@ -72,4 +75,3 @@ class QueryBase(QueryMixin):
         """
 
         return self.pandas_query(query_2)
-

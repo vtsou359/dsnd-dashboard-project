@@ -1,3 +1,5 @@
+# flake8: noqa
+
 # Import the QueryBase class
 # YOUR CODE HERE
 from .query_base import QueryBase
@@ -5,6 +7,7 @@ from .query_base import QueryBase
 # Import dependencies for sql execution
 #### YOUR CODE HERE
 from .sql_execution import QueryMixin
+
 
 # Create a subclass of QueryBase
 # called  `Team`
@@ -14,7 +17,7 @@ class Team(QueryBase):
     # Set the class attribute `name`
     # to the string "team"
     #### YOUR CODE HERE
-    name = 'team'
+    name = "team"
 
     # Define a `names` method
     # that receives no arguments
@@ -22,7 +25,7 @@ class Team(QueryBase):
     # a list of tuples from an sql execution
     #### YOUR CODE HERE
     def names(self):
-        
+
         # Query 5
         # Write an SQL query that selects
         # the team_name and team_id columns
@@ -54,7 +57,6 @@ class Team(QueryBase):
         """
         return self.query(query_6)
 
-
     # Below is method with an SQL query
     # This SQL query generates the data needed for
     # the machine learning model.
@@ -65,7 +67,7 @@ class Team(QueryBase):
     #### YOUR CODE HERE
     def model_data(self, id):
 
-        query__= f"""
+        query__ = f"""
             SELECT positive_events, negative_events FROM (
                     SELECT employee_id
                          , SUM(positive_events) positive_events
