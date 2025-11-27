@@ -197,9 +197,9 @@ class BarChart(MatplotlibViz):
 
         # here I apply a color scale
         # based on the predicted probability
-        if pred < 0.15:
+        if pred < 0.10:
             bar_color = "green"
-        elif pred < 0.50:
+        elif pred < 0.30:
             bar_color = "orange"
         else:
             bar_color = "red"
