@@ -64,7 +64,12 @@ class Header(BaseComponent):
         # return a fasthtml H1 objects
         # containing the model's name attribute
         #### YOUR CODE HERE
-        return H1(model.name)
+        if model.name.lower() == "team":
+            return H1("Team Performance and Recruitment Risk")
+        elif model.name.lower() == "employee":
+            return H1("Employee Performance and Recruitment Risk")
+        else:
+            return H1(model.name)
 
 
 # Create a subclass of base_components/MatplotlibViz
@@ -190,11 +195,20 @@ class BarChart(MatplotlibViz):
         else:
             pred = positive_probs[0]
 
+        # here I apply a color scale
+        # based on the predicted probability
+        if pred < 0.15:
+            bar_color = "green"
+        elif pred < 0.50:
+            bar_color = "orange"
+        else:
+            bar_color = "red"
+
         # Initialize a matplotlib subplot
         #### YOUR CODE HERE
         fig, ax = plt.subplots()
         # Run the following code unchanged
-        ax.barh([""], [pred])
+        ax.barh([""], [pred], color=bar_color)
         ax.set_xlim(0, 1)
         ax.set_title("Predicted Recruitment Risk", fontsize=20)
 
@@ -332,13 +346,6 @@ def get(id: str):
     return report(int(id), Team())
 
 
-#############################################
-###################################
-##########################
-##################
-##########
-####
-##
 # Keep the below code unchanged!
 @app.get("/update_dropdown{r}")
 def update_dropdown(r):
