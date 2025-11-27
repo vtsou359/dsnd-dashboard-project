@@ -7,7 +7,15 @@ from pathlib import Path
 # variable set to the absolute path
 # for the root of this project
 #### YOUR CODE HERE
-project_root = Path(__file__).parent.parent
+try:
+    # this approach works in scripts.py
+    project_root = Path(__file__).parent.parent
+except NameError:
+    # this approach works in interactive environments
+    project_root = Path.cwd().parent
+print(f"Project Root is: {project_root}")
+
+
 
 # apply the pytest fixture decorator
 # to a `db_path` function
